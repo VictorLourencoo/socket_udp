@@ -1,0 +1,76 @@
+Equipe: 
+        Victor Emanuel Bernardino Lourenço - 429850
+        Guilherme Pordeus Freire Sampaio - 475069 
+
+
+
+    Serviço Remoto  Gerenciador de disciplinas da UFC
+
+        Método Remoto - Criar_disciplina()
+
+            (in) Nome da disciplina
+                Nome do professor
+                Nome do curso
+                capacidade
+                data De Criação
+
+            (out) Argumento de saída
+                sucess: Disciplina cadastrada com sucesso
+                error: Disicplina ja cadastrada
+            Exceções    
+                Error: disciplina com entrada invalida
+                error: serviço indisponivel
+
+        Método Remoto - Mostrar_disciplinas()
+
+            (in) Argumentos de entrada
+               Chamada de função do usuario
+
+            (out) Argumento de saída
+             sucess: Objetio JSON com todas as disciplinas cadastradas
+            error: Nenhuma disciplina cadastrada
+            Exceções
+              error: serviço indisponivel
+
+        Método Remoto - Deletar_Disciplina()
+
+            (in) Argumentos de entrada
+                ID da disciplina
+                Chamada da função do usuario
+
+            (out) Argumento de saída
+            sucess: Disicplina deletado com sucesso
+            Exceções
+            error: Disicplina não existe
+            error: serviço indisponivel
+
+        Método Remoto - Atualizar_Disciplina()
+
+          (in) Argumentos de entrada
+                ID da disciplina
+                campo a ser atualizado
+                novo valor de atualização
+                Chamada da função do usuario
+
+            (out) Argumento de saída
+            sucess: Disicplina atualizada com sucesso
+            Exceções
+            error: Disicplina não existe
+            error: serviço indisponivel
+            error: dado a ser atualizado é invalido
+            
+        Método Remoto -Pesquisar_Disciplina()
+
+            (in) Argumentos de entrada
+                ID da disciplina
+                Chamada da função do usuario
+
+            (out) Argumento de saída
+            sucess: Retorno da disciplina passada por ID
+            Exceções
+            error: Disicplina não existe
+            error: serviço indisponivel
+
+
+            
+        
