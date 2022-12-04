@@ -2,8 +2,9 @@
 const Client = require('./serverClient')
 //const {Buffer} = require('node:buffer');
 
-  function DoOperation(Reference_Object, Method, JSON){
-    //envio
+var response;
+
+ async function DoOperation(Reference_Object, Method, JSON){
     const ID = Math.floor(Date.now() * Math.random()).toString(36)
       const Datagram = {
          "messageType": 0,
@@ -16,12 +17,15 @@ const Client = require('./serverClient')
 console.log("datagram: ", Datagram)
 const datagramEncapsuled =  empacotaMenssagem(Datagram)
  
- //console.log("data doOperation: ", datagramEncapsuled)
- const request = Client.serverClient(datagramEncapsuled)
- console.log(request)
-//const resposta =  DesempacotaMenssagem(request)
-//return resposta
-}  
+const request = await Client.EnviarMensagem(datagramEncapsuled)
+console.log("AQUI É O REQUEST: ", request)
+const Json_resposta = DesempacotaMenssagem(request)
+return Json_resposta
+   } 
+
+
+
+
 
 
 
@@ -34,10 +38,12 @@ function empacotaMenssagem(data_Object){
 }
 
 function DesempacotaMenssagem(msg){
+
    const encodedJsonObject = msg
    const decodedJsonObject01 = Buffer.from(encodedJsonObject, 'base64').toString('ascii'); 
    const decodedJsonObject = Buffer.from(decodedJsonObject01, 'base64').toString('ascii');
-  // console.log('--decodedJsonObject-->',JSON.parse(decodedJsonObject))
+//response = JSON.parse(decodedJsonObject)
+//console.log("aqui esta o response: ", response)
   return JSON.parse(decodedJsonObject)
     }
 

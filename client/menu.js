@@ -32,8 +32,7 @@ function Menu(){
         }
         console.log(Object_Disciplina)
         const resposta = Proxy.Criar_disciplina(Object_Disciplina)
-
-        //console.log(resposta)
+        console.log(resposta)
     }
     if(op == 2 ){
         const resposta = Proxy.listar_disciplina()

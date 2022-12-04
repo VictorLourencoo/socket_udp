@@ -1,40 +1,47 @@
 const dgram = require('node:dgram');
 // creating a client socket
 var client = dgram.createSocket('udp4');
+let buffer;
 
-function serverClient(datagramEncapsuled){
-//sending msg
-client.send(datagramEncapsuled,33333,'localhost',function(error){
-  if(error){
-    client.close();
-  }else{
-    console.log('Data sent !!!');
-  }
-});
+ const EnviarMensagem = async (datagramEncapsuled) =>{
+  return new Promise((resolve, reject) => {
+   client.send(datagramEncapsuled,33333,'localhost',function(error){
+    if(error){
+      client.close();
+    }else{
+      console.log('Data sent !!!');
+   
+    }
+  });
 
-client.on('message',(msg,info)=>{
-
+   client.on('message', (msg, info) => {
+    console.log("sever:", msg);
+    buffer = msg;
     //Preciso que o valor de msg seja visto pela função principal serverClient
     console.log('Data received from server : ' + msg.toString());
-    console.log('Received %d bytes from %s:%d\n',msg.length, info.address, info.port);
-    return msg
-  });
+    console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
  
+  });
+
+ setTimeout(()=>{
+  console.log("res:", buffer)
+ resolve(buffer)
+ }, 5000)
+
+ 
+})
+
 
 }
 
-function RequestData(datagramEncapsuled){
-    client.send(datagramEncapsuled, (err) => {});
-     
-   }
+
+
+
    
-   function ResponseData(datagram){
-    console.log(datagram)
-   return datagram
-   }
+ 
    
    
    
    module.exports ={
-     serverClient
+     EnviarMensagem
    }
