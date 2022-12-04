@@ -5,6 +5,7 @@ const Client = require('./serverClient')
 var response;
 
  async function DoOperation(Reference_Object, Method, JSON){
+
     const ID = Math.floor(Date.now() * Math.random()).toString(36)
       const Datagram = {
          "messageType": 0,
@@ -17,10 +18,11 @@ var response;
 console.log("datagram: ", Datagram)
 const datagramEncapsuled =  empacotaMenssagem(Datagram)
  
-const request = await Client.EnviarMensagem(datagramEncapsuled)
-console.log("AQUI É O REQUEST: ", request)
+const request = await  Client.EnviarMensagem(datagramEncapsuled)
+//console.log("AQUI É O REQUEST: ", request)
 const Json_resposta = DesempacotaMenssagem(request)
-return Json_resposta
+
+return Json_resposta 
    } 
 
 

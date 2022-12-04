@@ -7,7 +7,7 @@ let teclado = require('prompt-sync')();
     input: process.stdin,
     output: process.stdout
 })*/
-function Menu(){
+async function Menu(){
     console.log("Escolhe uma opção do menu")
     console.log("1°) Criar Disciplina")
     console.log("2°) Listar Discipĺinas")
@@ -31,12 +31,12 @@ function Menu(){
             capacidade: capacidade
         }
         console.log(Object_Disciplina)
-        const resposta = Proxy.Criar_disciplina(Object_Disciplina)
-        console.log(resposta)
+        const resposta = await Proxy.Criar_disciplina(Object_Disciplina)
+        console.log(resposta.arguments)
     }
     if(op == 2 ){
         const resposta = Proxy.listar_disciplina()
-        console.log(resposta)
+        console.log(resposta.arguments)
     }
     if(op == 3){
         console.log('menu')

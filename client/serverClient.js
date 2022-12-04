@@ -15,16 +15,16 @@ let buffer;
   });
 
    client.on('message', (msg, info) => {
-    console.log("sever:", msg);
+   // console.log("sever:", msg);
     buffer = msg;
     //Preciso que o valor de msg seja visto pela função principal serverClient
     console.log('Data received from server : ' + msg.toString());
     console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
  
   });
-
+console.log("Criando uma disciplina...")
  setTimeout(()=>{
-  console.log("res:", buffer)
+ // console.log("res:", buffer)
  resolve(buffer)
  }, 5000)
 
