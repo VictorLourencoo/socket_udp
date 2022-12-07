@@ -14,13 +14,36 @@ let ArrayDisciplinas = []
 
 }
 
-async function list_Disciplinas(args){
-   const res =  await find()
-    return res;
+async function listar_Disciplinas(){
+    return ArrayDisciplinas;
 }
+async function Deletar_Disciplinas(ID){
+for (let index = 0; index < ArrayDisciplinas.length; index++) {
+    const element = ArrayDisciplinas[index].id;
+   if(ID === element){
+    ArrayDisciplinas.splice(index, 1)
+   }
+    
+}
+return ArrayDisciplinas
+}
+
+async function Buscar_Disciplina(Nome_curso){
+    let arrayDisciplinasCurso = []
+    for (let index = 0; index < ArrayDisciplinas.length; index++) {
+        const element = ArrayDisciplinas[index].curso;
+       if(Nome_curso === element){
+        arrayDisciplinasCurso.push(ArrayDisciplinas[index])
+       }
+        
+    }
+    return arrayDisciplinasCurso
+    }
 
 
 module.exports ={
     Criar_Disciplina,
-    list_Disciplinas
+    listar_Disciplinas,
+    Deletar_Disciplinas,
+    Buscar_Disciplina
 }

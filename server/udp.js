@@ -12,12 +12,16 @@ server.on('error', (err) => {
 });
 
 
-server.on('message', function(msg, info){
+server.on('message', async function(msg, info){
  console.log('novo server conectado')
   console.log("menssage: ", msg)
+
   const data = DesempacotaRequisicao(msg)
-  const dataRequest = Despachante(data)
+ 
+  const dataRequest =  await Despachante(data)
+
   const response = EmpacotaResposta(dataRequest)
+ 
   server.send(response,info.port,'localhost',function(error){
     if(error){
       client.close();

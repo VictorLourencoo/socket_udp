@@ -1,11 +1,11 @@
 
 const Servente = require('./Servente')
-function Criar_Disciplina(data_Object){
-   // console.log(data_Object)
+ function Criar_Disciplina(data_Object){
+
     const arguments_json = data_Object.arguments
-   // console.log(data_Object)
+   
     const args_Object = JSON.parse(arguments_json)
-    //console.log(args_Object)
+
     const RespostaServente = Servente.Criar_Disciplina(args_Object)
     console.log(RespostaServente)
    const JSON_Response =  JSON.stringify(RespostaServente)
@@ -13,16 +13,25 @@ function Criar_Disciplina(data_Object){
 
 }
 
-function list_Disciplinas(){
-    const RespostaServente = Servente.list_Disciplinas() 
+async function list_Disciplinas(){
+    const RespostaServente = await Servente.listar_Disciplinas() 
+    return RespostaServente
 }
 
-function Deletar_Disciplina(args){
+async function Deletar_Disciplina(data_Object){
+    const arguments_json = data_Object.arguments
+    const ID = JSON.parse(arguments_json)
 
+    const RespostaServente = await Servente.Deletar_Disciplinas(ID) 
+    return RespostaServente
 }
 
-function Buscar_Disciplina(args){
+async function Buscar_Disciplina(data_Object){
+    const arguments_json = data_Object.arguments
+    const Nome_curso = JSON.parse(arguments_json)
 
+    const RespostaServente = await Servente.Buscar_Disciplina(Nome_curso) 
+    return RespostaServente
 }
 
 module.exports={

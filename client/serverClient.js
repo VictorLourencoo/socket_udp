@@ -22,11 +22,13 @@ let buffer;
     console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
  
   });
-console.log("Criando uma disciplina...")
  setTimeout(()=>{
- // console.log("res:", buffer)
- resolve(buffer)
- }, 5000)
+if(buffer){
+  resolve(buffer)
+}
+
+
+ }, 2000)
 
  
 })

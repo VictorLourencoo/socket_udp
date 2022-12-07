@@ -15,7 +15,6 @@ var response;
          "arguments": JSON
       }
 
-console.log("datagram: ", Datagram)
 const datagramEncapsuled =  empacotaMenssagem(Datagram)
  
 const request = await  Client.EnviarMensagem(datagramEncapsuled)
