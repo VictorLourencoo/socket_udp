@@ -1,8 +1,18 @@
 const esqueleto = require('./esqueleto')
-
+const md5 = require('md5')
 async function Despachante(dataJson){
-    const dataObject = JSON.parse(dataJson)
+    const DataGramCompleto = JSON.parse(dataJson)
+    const dataVerify = DataGramCompleto.DatagramHash
+    const HashClient = dataVerify.Hash
+    const dataObject  = DataGramCompleto.Datagram
+
+    const HashServer = md5(dataObject)
+    console.log("Hash CLient", HashClient )
+    console.log("hash Server", HashServer)
+    if(HashServer != HashClient) return
+
     const Method = dataObject.Method
+
     if(Method == 'CriarDisciplina()'){
         const JSON_Response =  esqueleto.Criar_Disciplina(dataObject)
         const Datagram = {

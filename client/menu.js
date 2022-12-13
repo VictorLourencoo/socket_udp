@@ -3,10 +3,7 @@
 
 const Proxy = require('./proxy.js')
 let teclado = require('prompt-sync')();
-/*const rl = readLine.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})*/
+
 
 async function Menu(){
     console.log("Escolhe uma opção do menu")
@@ -34,13 +31,21 @@ async function Menu(){
             curso: curso,
             capacidade: capacidade
         }
-        console.log(Object_Disciplina)
+        //console.log(Object_Disciplina)
         const resposta = await Proxy.Criar_disciplina(Object_Disciplina)
-        console.log(resposta.arguments)
+        if(resposta.Code == 500){
+            console.log(resposta.error)
+        }else{
+            console.log(resposta.arguments)
+           
+        }
+        
+        Menu()
     }
     if(op == 2 ){
         const resposta = await Proxy.listar_disciplina()
         console.log(resposta.arguments)
+        Menu()
     }
     if(op == 3){
         const disciplinas = await Proxy.listar_disciplina()
@@ -48,14 +53,28 @@ async function Menu(){
         console.log("Digite o ID da Disciplina")
         let ID_disciplina = teclado()
         const resposta = await Proxy.Deletar_disciplina(ID_disciplina)
-        console.log(resposta)
+        if(resposta.code === 500){
+            console.log(resposta.error)
+        }else{
+            console.log(resposta)
+        }
+        Menu()
     }
     if(op == 4 ){
         console.log("Digite o curso")
         let nome_curso = teclado()
+
         const resposta = await Proxy.Buscar_disciplina(nome_curso)
         console.log(resposta)
+        Menu()
     }
+    if(op == 5 ){
+        return
+      
+    }
+
+  
+
 
 
 }

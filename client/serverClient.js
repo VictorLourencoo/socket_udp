@@ -2,9 +2,18 @@ const dgram = require('node:dgram');
 // creating a client socket
 var client = dgram.createSocket('udp4');
 let buffer;
+const ServerFound= require('./exceptions/exceptions.js')
+
+
 
  const EnviarMensagem = async (datagramEncapsuled) =>{
+
+    
+  
   return new Promise((resolve, reject) => {
+
+      
+    
    client.send(datagramEncapsuled,33333,'localhost',function(error){
     if(error){
       client.close();
@@ -23,14 +32,15 @@ let buffer;
  
   });
  setTimeout(()=>{
-if(buffer){
-  resolve(buffer)
-}
+if(buffer === undefined){
+ buffer = 500
+ 
 
+}
+resolve(buffer)
 
  }, 2000)
 
- 
 })
 
 

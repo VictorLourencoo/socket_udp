@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "Buffer": "^0.0.0",
+    "md5": "^2.3.0",
     "mongoose": "^6.7.4",
     "prompt-sync": "^4.2.0",
     "socket.io": "^4.5.4"

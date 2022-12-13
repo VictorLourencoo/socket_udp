@@ -1,7 +1,8 @@
 //import Client from './client.js'
 const Client = require('./serverClient')
-//const {Buffer} = require('node:buffer');
-
+const md5 = require('md5')
+const Utils = require('./utils/utils.js')
+const {DatagramError} = require('./exceptions/exceptions.js')
 var response;
 
  async function DoOperation(Reference_Object, Method, JSON){
@@ -14,14 +15,30 @@ var response;
          "Method": Method,
          "arguments": JSON
       }
+      const HashMessage = md5(Datagram)
+      const DatagramHash = {
+         "requestID": ID,
+         "Hash": HashMessage
+      }
+      const Message = {
+         DatagramHash,
+         Datagram
+      }
 
-const datagramEncapsuled =  empacotaMenssagem(Datagram)
+const datagramEncapsuled =  Utils.empacotaMenssagem(Message)
  
 const request = await  Client.EnviarMensagem(datagramEncapsuled)
 //console.log("AQUI É O REQUEST: ", request)
-const Json_resposta = DesempacotaMenssagem(request)
+
+if(request == 500){
+   
+const ServerFound = DatagramError(Datagram)
+   return ServerFound
+}else{
+const Json_resposta = Utils.DesempacotaMenssagem(request)
 
 return Json_resposta 
+}
    } 
 
 
