@@ -1,11 +1,17 @@
-const md5 = require('md5')
-  
-var password = 'teste'
-  
-md5(password)
-var pass2 = 'teste'
-md5(pass2)
+const md5 = require('md5');
 
-if(password === pass2){
-    console.log("funciona")
+const datagramIntruso = 'ESSA MENSAGEM E MALISIOSA';
+
+const teste = {
+  teste: 'dmckdmkdckdmckdmc',
+};
+
+const v1 = md5(datagramIntruso);
+
+const v2 = md5(teste);
+
+if (v1 === v2) {
+  console.log('funciona');
 }
+console.log(v1);
+console.log(v2);

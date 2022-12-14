@@ -20,7 +20,7 @@ server.on('message', async (msg, info) => {
   console.log('menssage: ', msg);
 
   const data = DesempacotaRequisicao(msg);
-
+  console.log('udp: ', data);
   const dataRequest = await Despachante(data);
 
   const response = EmpacotaResposta(dataRequest);

@@ -17,6 +17,7 @@ async function listarDisciplinas() {
 
 async function DeletarDisciplina(dataObject) {
   const argumentsJson = dataObject.arguments;
+
   const ID = JSON.parse(argumentsJson);
 
   const RespostaServente = await Servente.DeletarDisciplinas(ID);

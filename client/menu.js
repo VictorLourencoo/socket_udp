@@ -39,7 +39,7 @@ async function Menu() {
         console.log(resposta.error);
       } else {
         statusCode = 200;
-        console.log(resposta.arguments);
+        console.log(resposta);
       }
     }
 
@@ -52,7 +52,7 @@ async function Menu() {
         console.log(resposta.error);
       } else {
         statusCode = 200;
-        console.log(resposta.arguments);
+        console.log(resposta);
       }
     }
     Menu();
@@ -72,7 +72,7 @@ async function Menu() {
           console.log(resposta.error);
         } else {
           statusCode = 200;
-          console.log(resposta.arguments);
+          console.log(resposta);
         }
       }
     }
@@ -88,7 +88,7 @@ async function Menu() {
         console.log(resposta.error);
       } else {
         statusCode = 200;
-        console.log(resposta.arguments);
+        console.log(resposta);
       }
     }
     Menu();

@@ -3,9 +3,11 @@ const md5 = require('md5');
 const Client = require('./serverClient');
 const Utils = require('./utils/utils');
 const { DatagramError } = require('./exceptions/exceptions');
+const OrderHistory = require('./utils/OrderHistory');
 
 async function DoOperation(ReferenceObject, Method, JSON) {
   const ID = Math.floor(Date.now() * Math.random()).toString(36);
+  // const ID = 'VICTOR';
   const Datagram = {
     messageType: 0,
     requestID: ID,
@@ -13,6 +15,7 @@ async function DoOperation(ReferenceObject, Method, JSON) {
     Method,
     arguments: JSON,
   };
+
   const HashMessage = md5(Datagram);
   const DatagramHash = {
     requestID: ID,
@@ -23,6 +26,12 @@ async function DoOperation(ReferenceObject, Method, JSON) {
     Datagram,
   };
 
+  const RequestVerify = OrderHistory.HistoryVerify(Datagram);
+
+  if (RequestVerify !== 200) {
+    return RequestVerify;
+  }
+  OrderHistory.HistorySucess(Datagram);
   const datagramEncapsuled = Utils.empacotaMenssagem(Message);
 
   const request = await Client.EnviarMensagem(datagramEncapsuled);
@@ -30,8 +39,10 @@ async function DoOperation(ReferenceObject, Method, JSON) {
 
   if (request === 500) {
     const ServerFound = DatagramError(Datagram);
+
     return ServerFound;
   }
+
   const JsonResposta = Utils.DesempacotaMenssagem(request);
 
   return JsonResposta;

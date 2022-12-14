@@ -13,19 +13,20 @@ const EnviarMensagem = async (datagramEncapsuled) => new Promise((resolve) => {
     }
   });
 
+  // eslint-disable-next-line no-unused-vars
   client.on('message', (msg, info) => {
     // console.log("sever:", msg);
     buffer = msg;
     // Preciso que o valor de msg seja visto pela função principal serverClient
-    console.log(`Dados Recebidos do servidor : ${msg.toString()}`);
-    console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
+    // console.log(`Dados Recebidos do servidor : ${msg.toString()}`);
+  // /  console.log('Received %d bytes from %s:%d\n', msg.length, info.address, info.port);
   });
   setTimeout(() => {
     if (buffer === undefined) {
       buffer = 500;
     }
     resolve(buffer);
-  }, 2000);
+  }, 3000);
 });
 
 module.exports = {

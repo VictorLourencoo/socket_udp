@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 const ArrayDisciplinas = [];
 
 function CriarDisciplina(args) {
@@ -14,8 +15,9 @@ async function listarDisciplinas() {
   return ArrayDisciplinas;
 }
 async function DeletarDisciplinas(ID) {
-  for (let index = 0; index < ArrayDisciplinas.length; index + 1) {
+  for (let index = 0; index < ArrayDisciplinas.length; index++) {
     const element = ArrayDisciplinas[index].id;
+
     if (ID === element) {
       ArrayDisciplinas.splice(index, 1);
     }
@@ -25,7 +27,7 @@ async function DeletarDisciplinas(ID) {
 
 async function BuscarDisciplina(Nomecurso) {
   const arrayDisciplinasCurso = [];
-  for (let index = 0; index < ArrayDisciplinas.length; index + 1) {
+  for (let index = 0; index < ArrayDisciplinas.length; index++) {
     const element = ArrayDisciplinas[index].curso;
     if (Nomecurso === element) {
       arrayDisciplinasCurso.push(ArrayDisciplinas[index]);
