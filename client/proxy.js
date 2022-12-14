@@ -1,53 +1,45 @@
+/* eslint-disable no-console */
+// import DoOperation from "./Operation.js"
+const DoOperation = require('./Operation');
 
-//import DoOperation from "./Operation.js"
-const DoOperation = require('./Operation')
+async function CriarDisciplina(ObjetcDisciplina) {
+  const JsonDisciplina = JSON.stringify(ObjetcDisciplina);
+  const Method = 'CriarDisciplina()';
+  const ReferenceObject = 'Disciplina';
+  console.log('Executando o ', Method);
+  const Disciplina = await DoOperation.DoOperation(ReferenceObject, Method, JsonDisciplina);
 
-  async function Criar_disciplina(Objetc_Disciplina){
-
-    const Json_Disciplina = JSON.stringify(Objetc_Disciplina)
-   //console.log("JSON -PROXY: ", Json_Disciplina)
-
-    const Method = "CriarDisciplina()"
-    const Reference_Object = 'Disciplina'
-    console.log("Executando o ", Method )
-    const Disciplina =  await DoOperation.DoOperation(Reference_Object, Method, Json_Disciplina)
-  //  console.log("aqui esta disciplina: ", Disciplina)
-
-    return Disciplina
-
+  return Disciplina;
 }
-async function listar_disciplina(){
-  const Method = "ListarDisciplinas()"
-  const Reference_Object = 'Disciplina'
-  const Json_Disciplina = []
-  const Disciplina = await DoOperation.DoOperation(Reference_Object, Method, Json_Disciplina)
-  console.log("Executando o ", Method )
-   return Disciplina
-  
-  }
-
-  async function Deletar_disciplina(ID_disciplina){
-    const Json_id = JSON.stringify(ID_disciplina)
-    const Method = "DeletarDisciplina()"
-    const Reference_Object = 'Disciplina'
-    const Disciplina = await DoOperation.DoOperation(Reference_Object, Method, Json_id)
-    console.log("Executando o ", Method )
-     return Disciplina
-    
-    }
-    async function Buscar_disciplina(Nome_curso){
-      const Json_id = JSON.stringify(Nome_curso)
-      const Method = "BuscarDisciplina()"
-      const Reference_Object = 'Disciplina'
-      const Disciplina = await DoOperation.DoOperation(Reference_Object, Method, Json_id)
-      console.log("Executando o ", Method )
-       return Disciplina
-      
-      }
-
-module.exports={
-  Criar_disciplina,
-  listar_disciplina,
-  Deletar_disciplina,
-  Buscar_disciplina
+async function listarDisciplina() {
+  const Method = 'ListarDisciplinas()';
+  const ReferenceObject = 'Disciplina';
+  const JsonDisciplina = [];
+  const Disciplina = await DoOperation.DoOperation(ReferenceObject, Method, JsonDisciplina);
+  console.log('Executando o ', Method);
+  return Disciplina;
 }
+
+async function DeletarDisciplina(IDDisciplina) {
+  const JsonId = JSON.stringify(IDDisciplina);
+  const Method = 'DeletarDisciplina()';
+  const ReferenceObject = 'Disciplina';
+  const Disciplina = await DoOperation.DoOperation(ReferenceObject, Method, JsonId);
+  console.log('Executando o ', Method);
+  return Disciplina;
+}
+async function BuscarDisciplina(NomeCurso) {
+  const JsonId = JSON.stringify(NomeCurso);
+  const Method = 'BuscarDisciplina()';
+  const ReferenceObject = 'Disciplina';
+  const Disciplina = await DoOperation.DoOperation(ReferenceObject, Method, JsonId);
+  console.log('Executando o ', Method);
+  return Disciplina;
+}
+
+module.exports = {
+  CriarDisciplina,
+  listarDisciplina,
+  DeletarDisciplina,
+  BuscarDisciplina,
+};

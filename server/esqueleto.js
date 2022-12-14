@@ -1,43 +1,40 @@
+const Servente = require('./Servente');
 
-const Servente = require('./Servente')
- function Criar_Disciplina(data_Object){
+function CriarDisciplina(dataObject) {
+  const argumentsJson = dataObject.arguments;
 
-    const arguments_json = data_Object.arguments
-   
-    const args_Object = JSON.parse(arguments_json)
+  const argsObject = JSON.parse(argumentsJson);
 
-    const RespostaServente = Servente.Criar_Disciplina(args_Object)
-    console.log(RespostaServente)
-   const JSON_Response =  JSON.stringify(RespostaServente)
-     return JSON_Response
-
+  const RespostaServente = Servente.CriarDisciplina(argsObject);
+  const JSONResponse = JSON.stringify(RespostaServente);
+  return JSONResponse;
 }
 
-async function list_Disciplinas(){
-    const RespostaServente = await Servente.listar_Disciplinas() 
-    return RespostaServente
+async function listarDisciplinas() {
+  const RespostaServente = await Servente.listarDisciplinas();
+  return RespostaServente;
 }
 
-async function Deletar_Disciplina(data_Object){
-    const arguments_json = data_Object.arguments
-    const ID = JSON.parse(arguments_json)
+async function DeletarDisciplina(dataObject) {
+  const argumentsJson = dataObject.arguments;
+  const ID = JSON.parse(argumentsJson);
 
-    const RespostaServente = await Servente.Deletar_Disciplinas(ID) 
-    return RespostaServente
+  const RespostaServente = await Servente.DeletarDisciplinas(ID);
+  return RespostaServente;
 }
 
-async function Buscar_Disciplina(data_Object){
-    const arguments_json = data_Object.arguments
-    const Nome_curso = JSON.parse(arguments_json)
+async function BuscarDisciplina(dataObject) {
+  const argumentsJson = dataObject.arguments;
+  const NomeCurso = JSON.parse(argumentsJson);
 
-    const RespostaServente = await Servente.Buscar_Disciplina(Nome_curso) 
-    return RespostaServente
+  const RespostaServente = await Servente.BuscarDisciplina(NomeCurso);
+  return RespostaServente;
 }
 
-module.exports={
-    Criar_Disciplina,
-    list_Disciplinas,
-    Buscar_Disciplina,
-    Deletar_Disciplina
+module.exports = {
+  CriarDisciplina,
+  listarDisciplinas,
+  BuscarDisciplina,
+  DeletarDisciplina,
 
-}
+};
