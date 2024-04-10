@@ -1,6 +1,5 @@
 # socket_udp
-Aplicação cliente servidor usando sockets, trabalho final disciplina de sistemas distribuidos
-
+Aplicação cliente servidor usando sockets
 rode o comando 
        "npm instal"
 
